@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="./assets/css/style.css"> -->
+    <script src="https://kit.fontawesome.com/7f826169a7.js" crossorigin="anonymous"></script> 
+    <title>Musical</title>
+   <style>
+    :root {
+        --text-color:#fff;
+        --descrip-text-color: #868685;
+    }
+
+    *{
+        margin: 0;
+        padding:0;
+        box-sizing: inherit;
+    }
+    html{
+        font-size: 62.5%;
+        line-height: 1.6rem;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+    }
+    body{
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        background-color: black;
+        color: var(--text-color);
+    }
+    aside{
+        width: 5.7%;
+        height: 100%;
+        left: 0;
+        position: fixed;
+        background-color: whitesmoke;
+        flex-wrap: wrap;
+    }
+    .logo {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+    }
+    .logo-icon{
+        display: block;
+        font-size: 3.2rem;
+        color: #ff3c63;
+    }
+    nav{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-size: 1.4rem;
+    }
+    nav a{
+        display: block;
+        padding: 2rem 0;
+        text-decoration: none;
+        color: var(--descrip-text-color)
+    }
+
+    section{
+        width:75%;
+        height: 900px;
+        left: 8rem;
+        position: relative;
+        background-color: #020a13;
+    }
+
+    .search-menu {
+        position: absolute;
+        left: 0px;
+        width: 100%;
+    }
+
+    .search-input {
+        display: flex;
+        align-items: center;
+        margin: 2rem 2.4rem;
+        background-color: #1C1B1C;
+        height: 4rem;
+        border-radius: 45px;
+        font-size: 1.6rem;
+        color: var(--descrip-text-color);
+        width: 88%;
+    }
+
+    .search-text{
+        height: 4rem;
+        border-radius: 45px;
+        margin-left: 10px;
+        width: 100%;
+        border: none;
+        outline: none;
+        background-color: #1C1B1C;
+        color: var(--descrip-text-color);
+        
+    }
+
+    .search-text:focus {
+        outline: none;
+    }
+
+    
+
+    .search-icon{
+        margin-left: 10px;
+    }
+
+    .main-content-text{
+        position: absolute;
+        top:80px;
+        left:10px;
+        font-size: 2rem;
+    }
+
+
+    article {
+        position: relative; 
+        left: 0px;
+        right: 0px;
+        width: 40%;
+        background-color: #131313;  
+        flex-wrap: wrap;
+    }
+    .player {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .cd {
+        display: flex;
+        width: 50%;
+        padding-bottom: 50%; 
+    }
+
+    .cd-thumbnail {
+        width: 100%;
+        padding-bottom: 100%;
+        border-radius: 50%;
+        background-color: #0C0C0E;
+        background-size: cover;
+        margin: 10px;
+    }
+    .playing-song {
+        margin: 4.8rem;
+        text-align: center;
+    }
+
+    .playing-song-name {
+        font-size: 1.8rem;
+        line-height: 1.8rem;
+        padding-bottom: 1.2rem;
+        color: var(--text-color);
+    }
+
+    .playing-song-artist {
+        font-size: 1rem;
+        color: var(--descrip-text-color);
+    }
+
+    .btn-toggle-play .icon-pause {
+        display: none;
+    }
+
+    .btn-toggle-play .icon-play{
+        display: none;
+    }
+
+    .active{
+        display: block;
+    }
+    .btn-toggle-play {
+    font-size: 4.4rem;
+    color: #ff3c63;
+    }
+
+    .btn.active {
+        color: #ff3c63;
+    }
+
+    .btn:active {
+        color: #ff3c63;
+    }
+
+    #progress {
+        margin-top: 0.4rem;
+        width: 70%;
+        -webkit-appearance: none;
+        height: 6px;
+        outline: none;
+        opacity: 0.5;
+        -webkit-transition: 0.2s;
+        transition: opacity 0.2s;
+        border-radius: 5px;
+    }
+
+    .progress::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 10px;
+        height: 6px;
+        background-color: #ff3c63;
+        opacity: 1;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+    .controls {
+        margin: 4.8rem 0;
+        width: 70%;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        font-size: 1.8rem;
+    }
+
+    .main-content {
+    margin: 0 2.4rem;
+}
+.playlist {
+    position: absolute;
+    top: 100px;
+    width: 90%;
+}
+
+.main-content-text {
+    padding-bottom: 1.4rem;
+    line-height: 1.8rem;
+    font-size: 1.8rem;
+}
+
+.main-content {
+    margin: 0 2.4rem;
+}
+
+.main-content-text {
+    padding-bottom: 1.4rem;
+    line-height: 1.8rem;
+    font-size: 1.8rem;
+}
+
+.song,
+.song-contain {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.song{
+    justify-content: space-between;
+    padding: 1.2rem 0 1rem 1rem;
+    border-radius: 7px;
+}
+
+.song:hover {
+    background-color: rgba(240, 175, 226, 0.1);
+    cursor: pointer;
+}
+
+.song-number {
+    
+}
+
+.song-img {
+   width: 6rem;
+   height: 6rem;
+   border-radius: 5px;
+   background-size: cover;
+   margin: 3px 10px;
+}
+
+.song-text {
+    padding-left: 1.6rem;
+    
+}
+
+.song-name {
+    font-size: 1.4rem;
+    font-weight: 550;
+}
+.song-artist {
+    font-size: 1rem;
+    color: var(--descrip-text-color);
+}
+
+.song-select {
+    padding-right: 2rem;
+    font-size: 1.6rem;
+    /* width: 20%; */
+    justify-content: space-between;
+}
+
+.song-duration {
+  
+}
+
+.song.playing{
+    background-color: #ff3c63;
+}
+
+.song.playing .song-text,.song.playing .song-artist{
+    color: #fff;
+}
+
+.song-select div i {
+    padding-left: 2.4rem;
+}
+
+.btn-toggle-play {
+    font-size: 4.4rem;
+    color: #ff3c63;
+}
+
+.btn.active {
+    color: #ff3c63;
+}
+
+.btn:active {
+    color: #ff3c63;
+}
+
+   </style>
+   
+</head>
+<body>
+    <aside>
+        <div class="logo header">
+            <i class="logo-icon fa-solid fa-compact-disc"></i>
+        </div>
+        <nav>
+            <a href="">
+                <i class="fa-solid fa-house"></i>
+            </a>
+            <a href="">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </a>
+            <a href="">
+                <i class="fa-solid fa-heart"></i>
+            </a>
+            <a href="">
+                <i class="fa-solid fa-plus"></i>
+            </a>      
+        </nav>
+    </aside>
+    <section>
+        <div class="search-menu header">
+            <div class="search-input">
+                <i class="search-icon fa-solid fa-magnifying-glass"></i>
+                <input class="search-text" type="text" placeholder="Search for song, artist, lyrics,...">
+            </div>
+        </div>
+
+        <div class="main-content">
+            <h4 class="main-content-text">Your Playlist</h4>
+
+            <div class="playlist">
+
+            </div>
+        </div>
+    </section>
+
+    <article>
+        <div class="header"></div>
+        <div class="player">
+
+            <div class="cd">
+                <div class="cd-thumbnail" style="background-image: url('./assets/img/avt.png');"></div>
+            </div>
+
+            <div class="playing-song">
+                <h5 class="playing-song-name">True</h5>
+                <p class="playing-song-artist">HOYO-MiX · 黄龄 · 文驰 · TetraCalyx</p>
+            </div>
+
+            <input id="progress" class="progress" type="range" value="0" step="1" min="0" max="100">
+
+            <div class="controls">
+                <div class="btn btn-repeat">
+                    <i class="fa-solid fa-rotate"></i>
+                </div>
+                <div class="btn btn-prev">
+                    <i class="fa-solid fa-backward"></i>
+                </div>
+                <div class="btn btn-toggle-play">
+                    <i class="icon-play fa-solid fa-circle-play"></i>
+                    <i class="icon-pause fa-solid fa-circle-pause"></i>
+                </div>
+                <div class="btn btn-next">
+                    <i class="icon-next fa-solid fa-forward"></i>
+                </div>
+                <div class="btn btn-shuffle">
+                    <i class="icon-shuffle fa-solid fa-shuffle"></i>
+                </div>
+            </div>
+
+            <audio id="audio" src=""></audio>
+        </div>
+    </article> 
+
+    <script>
+
+        const $ = document.querySelector.bind(document)
+        const $$ = document.querySelectorAll.bind(document)
+        const player = $('.player')
+        const playlist = $('.playlist')
+        const cdThumbnail = $('.cd-thumbnail')
+        const audio = $('#audio')
+        const playBtn = $('.btn-toggle-play')
+        const playIcon = $('.btn-toggle-play .icon-play')
+        const pauseIcon = $('.btn-toggle-play .icon-pause')
+        const progressPercent = $('#progress')
+        const nextBtn = $('.btn-next')
+        const prevBtn  = $('.btn-prev')
+        const repeatBtn = $('.btn-repeat')
+        const shuffleBtn = $('.btn-shuffle')
+        const song = document.querySelectorAll('song ')
+        var songName =$('.playing-song-name');
+        var songArtist = $('.playing-song-artist');
+        var songImg =$('.cd-thumbnail');
+        var shuffleArray = []
+      
+        const PLAYER_STORAGE_KEY = 'MUSIC_PLAYER'
+
+        
+        const app ={
+            currentIndex: 0,
+            isPlaying: false,
+            isRandom: false,
+            isRepeat: false,
+            configs: JSON.parse(localStorage.getItem(PLAYER_STORAGE_KEY)) || {},
+            songs: [
+        {
+            name: "True",
+            singer: "HOYO-MiX · 黄龄 · 文驰 · TetraCalyx",
+            path: "./assets/songs/TruE.mp3",
+            image: "./assets/img/TruE.jpg",
+            isFavorite: false
+        },
+        {
+            name: "Regression",
+            singer: "Ayanga",
+            path: "./assets/songs/Regression - Honkai Impact 3rd Theme Song Performed by- Ayanga - Honkai Impact 3rd.mp3",
+            image: "./assets/img/Regression.jpg",
+            isFavorite: false
+        },
+        {
+            name: "Rubia",
+            singer: "Zhou Shen",
+            path: "./assets/songs/Rubia (Performed by Zhou Shen) - Honkai Impact 3rd.mp3",
+            image: "./assets/img/Rubia.jpg",
+            isFavorite: false
+        },
+        {
+            name: "Starfall",
+            singer: "TIA RAY",
+            path: "./assets/songs/[Starfall] (Performed by TIA RAY) - Honkai Impact 3rd OST.mp3",
+            image: "./assets/img/Starfall.jpg",
+            isFavorite: false
+        },
+        {
+            name: "Moon Halo",
+            singer: "茶理理 x TetraCalyx x Hanser",
+            path: "./assets/songs/Moon Halo - Honkai Impact 3rd Valkyrie Theme.mp3",
+            image: "./assets/img/Moon Halo.jpg",
+            isFavorite: false
+        },
+        {
+            name: "Houkai Sekai no Utahime (Honkai World Diva)",
+            singer: "Mika Kobayashi",
+            path: "./assets/songs/Houkai Sekai no Utahime (Honkai World Diva, movie ver.)-- Honkai Impact 3rd.mp3",
+            image: "./assets/img/Houkai Sekai no Utahime.jpg",
+            isFavorite: false
+        },
+        {
+            name: "Dual-Ego",
+            singer: "Sa Dingding",
+            path: "./assets/songs/Dual-Ego Honkai Impact 3rd OSTBy Sa Dingding.mp3",
+            image: "./assets/img/Dual-Ego.jpg",
+            isFavorite: false
+        },
+        {
+            name: "Da Capo",
+            singer: "车子玉Ziyu Che",
+            path: "./assets/songs/Da Capo  Honkai Impact 3rd Theme Song.mp3",
+            image: "./assets/img/Da Capo.jpg",
+            isFavorite: false
+        },
+        {
+            name: "Cyberangel",
+            singer: "Hanser",
+            path: "./assets/songs/Cyberangel Honkai Impact 3rd OSTBy Hanser.mp3",
+            image: "./assets/img/Cyberangel.webp",
+            isFavorite: false
+        }
+    ],
+
+    setConfig: function(key, value) {
+        this.configs[key] = value;
+        localStorage.setItem(PLAYER_STORAGE_KEY, JSON.stringify(this.configs))
+    },
+
+    loadConfig: function() {
+        this.isRandom = this.configs.isRandom
+        this.isRepeat = this.configs.isRepeat
+
+        if (app.isRepeat) {
+            repeatBtn.classList.add('active')
+        }
+
+        if (app.isRandom) {
+            shuffleBtn.classList.add('active')
+        }
+    },
+
+    defineProperties:function(){
+        Object.defineProperty(this,'currentSong',{
+            get: function(){
+                return this.songs[this.currentIndex]
+            }
+        })
+    },
+
+
+    render:function(){
+        const htmls = this.songs.map((song, index) =>{
+            return `
+            <div class="song ${index == this.currentIndex ? 'playing' : ''}" data-index="${index}" onclick="load(${index})")>
+                <div class="song-contain">
+                    <div class="song-img" style="background-image: url('${song.image}')" alt="" class="song-image"></div>
+                    <div class="song-text">
+                        <h5 class="song-name">${song.name}</h5>
+                        <p class="song-artist">${song.singer}</p>
+                    </div>
+                </div>
+
+                <div class="song-contain song-select">
+                    <div>
+                        <i class="song-favorite-${index} btn song-favorite fa-regular fa-heart" onclick="handleFavorite(event)"></i>
+                        <i class="btn song-remove-${index} fa-solid fa-xmark" onclick="handleRemove(event)"></i>
+                    </div>
+                </div>
+            </div>
+            `
+        })
+        playlist.innerHTML = htmls.join('');
+
+    },
+
+    handelEvent: function(){
+        const cdThumb = cdThumbnail.animate([
+            {transform: 'rotate(360deg)'}
+        ],{
+            duration:10000,
+            iterations: Infinity
+        })
+        cdThumb.pause();
+
+        // var cdWidth = cdThumbnail.offsetWidth
+        // if (cdWidth<100) cdWidth.style.width =0
+
+
+       
+        playBtn.onclick = function(){
+            if(app.isPlaying){
+                audio.pause();
+            }else{
+                audio.play();  
+            }
+       },
+        audio.onplay = function() {
+            app.isPlaying = true;
+            pauseIcon.style.display = "block"
+            playIcon.style.display = "none"
+            cdThumb.play()
+        },
+
+        audio.onpause = function (){
+            app.isPlaying = false;
+            pauseIcon.style.display = "none"
+            playIcon.style.display = "block"
+            cdThumb.pause()
+        },
+
+        audio.ontimeupdate = function(){
+            var progress = Math.floor(audio.currentTime/audio.duration*100);
+            progressPercent.value = progress
+        }
+       
+        progressPercent.onchange= function(e){
+            var seekTime =  audio.duration/100*e.target.value;
+            audio.currentTime = seekTime;
+        }
+
+        nextBtn.onclick = function(){
+            app.nextSong();
+            app.render();
+        }        
+
+        prevBtn.onclick = function(){
+            app.previousSong();
+        }        
+
+        shuffleBtn.onclick = function(){
+            app.isRandom = !app.isRandom
+            app.setConfig('isRandom', app.isRandom)
+            shuffleBtn.classList.toggle('active', app.isRandom)
+            app.randomSong();
+        }
+
+        repeatBtn.onclick = function(){
+            app.isRepeat = !app.isRepeat
+            app.setConfig('isRepeat', app.isRepeat) 
+            repeatBtn.classList.toggle("active");
+           
+        }
+        
+        audio.onended = function(){
+            if(repeatBtn.classList.contains('active'))
+            {
+                audio.play()
+            }else{
+                nextBtn.click();
+            }
+        }
+
+
+       
+    },
+
+    loadCurrentSong:function(){
+        // const cdThumbnail = $('.cd-thumbnail')
+        // const audio = $('#audio')
+       
+        // playingSong.classList.toggle("active")
+        songName.textContent= this.currentSong.name;
+        songArtist.textContent = this.currentSong.singer;
+        songImg.style.backgroundImage = `url('${this.currentSong.image}')`;
+        audio.src=this.currentSong.path;
+        pauseIcon.style.display = "block"
+        playIcon.style.display = "none"
+        audio.play();
+        isPlaying = true
+        const songs =$$('.song')
+        const song =$('.song.playing')
+        song.classList.remove('playing')
+        songs[this.currentIndex].classList.add('playing')
+        this.srollToActiveSong()
+
+    },
+
+    nextSong: function(){
+        this.currentIndex++
+        if(this.currentIndex>=this.songs.length) {
+            this.currentIndex=0
+        }
+        this.loadCurrentSong()
+    },
+
+    previousSong: function(){
+        this.currentIndex--
+        if(this.currentIndex<0) {
+            this.currentIndex=0
+        }
+        this.loadCurrentSong() 
+    },
+
+    randomSong: function(){
+        var random;
+        do{
+            random = Math.floor(Math.random() * (app.songs.length))
+        }while(random ==! this.currentIndex)
+        this.currentIndex = random;
+        this.loadCurrentSong();
+        
+    },
+
+    repeatSong: function(){
+        audio.play();
+    },
+
+    srollToActiveSong: function(){
+        setTimeout(()=>{
+            $('.song.playing').scrollIntoView({
+                behavior:'smooth',
+                block:'start'
+            })
+        })
+    },
+    start:function(){
+
+        this.loadConfig();
+         // Định nghĩa thuộc tính cho Object
+        this.defineProperties()
+
+        //Xử lý sự kiện
+        this.handelEvent()
+
+        //Render dữ liệu
+        this.render()
+
+        this.loadCurrentSong()
+
+        
+        
+    }
+       
+}
+app.start()
+
+function load(index){
+    const songs = $$('.song');
+    if(index!==app.currentIndex){
+        songs[app.currentIndex].classList.remove('playing')
+        songs[index].classList.add('playing')
+        app.currentIndex = index;
+        app.loadCurrentSong();
+    }
+}
+function handleRemove(event) {
+    event.stopPropagation()
+    const songElement = event.target.closest('.song')
+    const dataIndex = songElement.dataset.index;
+    const removeBtn = $(`.song-remove-${dataIndex}`)
+
+    const removeSong = removeBtn.closest('.song')
+    app.songs.splice(removeSong, 1)
+    removeSong.style.display = 'none'
+}
+
+</script> 
+</body>
+</html>
